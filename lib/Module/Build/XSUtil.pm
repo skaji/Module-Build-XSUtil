@@ -366,7 +366,9 @@ sub _xshelper_h {
 :#define LooksLikeNumber(x) (SvPOKp(x) ? looks_like_number(x) : (I32)SvNIOKp(x))
 :#endif
 :
+:#ifndef newAV_mortal
 :#define newAV_mortal()         (AV*)sv_2mortal((SV*)newAV())
+:#endif
 :#define newHV_mortal()         (HV*)sv_2mortal((SV*)newHV())
 :#define newRV_inc_mortal(sv)   sv_2mortal(newRV_inc(sv))
 :#define newRV_noinc_mortal(sv) sv_2mortal(newRV_noinc(sv))
