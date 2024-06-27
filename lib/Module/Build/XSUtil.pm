@@ -237,7 +237,7 @@ sub _cc_warnings {
         my $gccversion = $self->_gcc_version();
         if ( $gccversion >= 4.0 ) {
             push @flags, qw(-Wextra);
-            if ( !( $args->{needs_compiler_c99} or $args->{needs_compiler_cpp} ) ) {
+            if ( $] < 5.036 && !( $args->{needs_compiler_c99} or $args->{needs_compiler_cpp} ) ) {
 
                 # Note: MSVC++ doesn't support C99,
                 # so -Wdeclaration-after-statement helps
